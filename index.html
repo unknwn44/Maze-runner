@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="3D Maze Runner - A first-person maze game inspired by The Maze Runner movie. Navigate through procedurally generated mazes, avoid enemies, and beat the clock!" />
+  <title>Maze Runner — The Glade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div id="hud-left">
+      <div class="hud-item" id="hud-level">
+        <span class="hud-label">SECTION</span>
+        <span class="hud-value" id="levelDisplay">1</span>
+      </div>
+      <div class="hud-item" id="hud-timer">
+        <span class="hud-label">TIME</span>
+        <span class="hud-value" id="timerDisplay">00:00</span>
+      </div>
+    </div>
+    <div id="hud-center">
+      <div id="crosshair">+</div>
+    </div>
+    <div id="hud-right">
+      <div class="hud-item" id="hud-health">
+        <span class="hud-label">STAMINA</span>
+        <div id="healthBar"><div id="healthBarFill"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Minimap -->
+  <canvas id="minimap" class="hidden" width="180" height="180"></canvas>
+
+  <!-- Warning overlay when enemy is near -->
+  <div id="warningOverlay" class="hidden"></div>
+
+  <!-- Start Screen -->
+  <div id="startScreen" class="overlay">
+    <div class="overlay-content start-content">
+      <div class="title-group">
+        <h1 class="game-title">MAZE RUNNER</h1>
+        <p class="game-subtitle">ESCAPE THE GLADE</p>
+      </div>
+      <div class="divider"></div>
+      <div class="controls-info">
+        <div class="control-row"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>Move</span></div>
+        <div class="control-row"><kbd>SPACE</kbd><span>Jump</span></div>
+        <div class="control-row"><kbd>SHIFT</kbd><span>Sprint</span></div>
+        <div class="control-row"><kbd>MOUSE</kbd><span>Look Around</span></div>
+      </div>
+      <button id="startBtn" class="btn-primary">ENTER THE MAZE</button>
+      <p class="hint-text">Find the exit before the Grievers find you.</p>
+    </div>
+  </div>
+
+  <!-- Level Complete Screen -->
+  <div id="levelCompleteScreen" class="overlay hidden">
+    <div class="overlay-content">
+      <h2 class="result-title win-title">SECTION CLEARED</h2>
+      <div class="stats-grid">
+        <div class="stat"><span class="stat-label">Time</span><span class="stat-value" id="lcTime">00:00</span></div>
+        <div class="stat"><span class="stat-label">Section</span><span class="stat-value" id="lcLevel">1</span></div>
+      </div>
+      <button id="nextLevelBtn" class="btn-primary">NEXT SECTION</button>
+    </div>
+  </div>
+
+  <!-- Game Over Screen -->
+  <div id="gameOverScreen" class="overlay hidden">
+    <div class="overlay-content">
+      <h2 class="result-title lose-title">CAUGHT BY GRIEVER</h2>
+      <div class="stats-grid">
+        <div class="stat"><span class="stat-label">Survived</span><span class="stat-value" id="goTime">00:00</span></div>
+        <div class="stat"><span class="stat-label">Section</span><span class="stat-value" id="goLevel">1</span></div>
+      </div>
+      <button id="retryBtn" class="btn-primary">TRY AGAIN</button>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
